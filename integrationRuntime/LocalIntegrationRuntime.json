@@ -1,0 +1,7 @@
+{
+	"name": "LocalIntegrationRuntime",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "Local from my laptop"
+	}
+}
