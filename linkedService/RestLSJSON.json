@@ -1,0 +1,17 @@
+{
+	"name": "RestLSJSON",
+	"properties": {
+		"description": "using json free rest api - https://jsonplaceholder.typicode.com/",
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://jsonplaceholder.typicode.com/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "LocalIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
