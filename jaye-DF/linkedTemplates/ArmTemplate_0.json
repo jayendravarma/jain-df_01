@@ -438,7 +438,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"fileName": "customer.csv",
-						"fileSystem": "Dataflow"
+						"fileSystem": "dataflow"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
