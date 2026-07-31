@@ -20,7 +20,8 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"exists"
+						"exists",
+						"lastModified"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
@@ -45,10 +46,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@activity('Get Metadata_Sync').output.exists",
+						"value": "@greaterOrEquals(\n    sub(\n        ticks(utcNow()), \n        ticks(activity('Get Metadata_Sync').output.lastModified)\n    ),\n    36000000000\n)",
 						"type": "Expression"
 					},
-					"ifFalseActivities": [
+					"ifTrueActivities": [
 						{
 							"name": "Copy_SQL",
 							"type": "Copy",
