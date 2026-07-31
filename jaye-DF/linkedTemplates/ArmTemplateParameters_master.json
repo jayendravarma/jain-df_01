@@ -8,7 +8,13 @@
 		"AzureDataLakeStorageLS_accountKey": {
 			"value": ""
 		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
 		"SqlServer1_password": {
+			"value": ""
+		},
+		"SqlServer2_password": {
 			"value": ""
 		},
 		"AzureDataLakeStorageLS_properties_typeProperties_url": {
@@ -16,6 +22,15 @@
 		},
 		"AzureKeyVault_jaindf_properties_typeProperties_baseUrl": {
 			"value": "https://jain-df.vault.azure.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "mysqlserverdevmorningjuly.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "adventureworks"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "dbadmin"
 		},
 		"RestLSJSON_properties_typeProperties_url": {
 			"value": "https://jsonplaceholder.typicode.com/"
@@ -28,6 +43,15 @@
 		},
 		"SqlServer1_properties_typeProperties_userName": {
 			"value": "jain"
+		},
+		"SqlServer2_properties_typeProperties_server": {
+			"value": "mysqlserverdevmorningjuly.database.windows.net"
+		},
+		"SqlServer2_properties_typeProperties_database": {
+			"value": "adventureworks"
+		},
+		"SqlServer2_properties_typeProperties_userName": {
+			"value": "dbadmin"
 		},
 		"containerUri": {
 			"value": ""
