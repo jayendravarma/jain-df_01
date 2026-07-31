@@ -1183,7 +1183,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"fileName": "customer.csv",
-						"fileSystem": "dataflow"
+						"fileSystem": "output"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -1442,6 +1442,14 @@
 					],
 					"transformations": [
 						{
+							"name": "flowlet1",
+							"flowlet": {
+								"referenceName": "flowlet1",
+								"type": "DataFlowReference",
+								"parameters": {}
+							}
+						},
+						{
 							"name": "derivedColumn1"
 						},
 						{
@@ -1473,6 +1481,10 @@
 						"     validateSchema: false,",
 						"     isolationLevel: 'READ_UNCOMMITTED',",
 						"     format: 'table') ~> CustomerData",
+						"sort1 compose(mapColumn(",
+						"          ModifiedDate",
+						"     ),",
+						"     composition: 'flowlet1') ~> flowlet1@(output1)",
 						"CustomerData derive(FullName = concat(\r",
 						"    iif(isNull(Title), '', Title + ' '),\r",
 						"    iif(isNull(FirstName), '', FirstName + ' '),\r",
@@ -1495,7 +1507,7 @@
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true) ~> select1",
 						"select1 sort(asc(CustomerID, true)) ~> sort1",
-						"sort1 sink(allowSchemaDrift: true,",
+						"flowlet1@output1 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     partitionFileNames:['customer_Transform.csv'],",
 						"     umask: 0022,",
@@ -1507,9 +1519,43 @@
 				}
 			},
 			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/flowlet1')]",
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]",
 				"[concat(variables('factoryId'), '/datasets/DelimitedText3')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/flowlet1')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Flowlet",
+				"typeProperties": {
+					"sources": [],
+					"sinks": [],
+					"transformations": [
+						{
+							"name": "derivedColumn1"
+						},
+						{
+							"name": "input1"
+						},
+						{
+							"name": "output1"
+						}
+					],
+					"scriptLines": [
+						"input(output(",
+						"          ModifiedDate as timestamp",
+						"     ),",
+						"     order: 0,",
+						"     allowSchemaDrift: true) ~> input1",
+						"input1 derive(AddDateTime = currentUTC()) ~> derivedColumn1",
+						"derivedColumn1 output() ~> output1"
+					]
+				}
+			},
+			"dependsOn": []
 		}
 	]
 }
