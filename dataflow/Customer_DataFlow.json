@@ -30,6 +30,13 @@
 				},
 				{
 					"name": "sort1"
+				},
+				{
+					"name": "flowlet1",
+					"flowlet": {
+						"referenceName": "flowlet1",
+						"type": "DataFlowReference"
+					}
 				}
 			],
 			"scriptLines": [
@@ -60,8 +67,7 @@
 				"    iif(isNull(MiddleName), '', MiddleName + ' '),\r",
 				"    iif(isNull(LastName), '', LastName + ' '),\r",
 				"    iif(isNull(Suffix), '', Suffix)\r",
-				")\r",
-				") ~> derivedColumn1",
+				")) ~> derivedColumn1",
 				"derivedColumn1 select(mapColumn(",
 				"          CustomerID,",
 				"          NameStyle,",
@@ -77,7 +83,11 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"select1 sort(asc(CustomerID, true)) ~> sort1",
-				"sort1 sink(allowSchemaDrift: true,",
+				"sort1 compose(mapColumn(",
+				"          ModifiedDate",
+				"     ),",
+				"     composition: 'flowlet1') ~> flowlet1@(output1)",
+				"flowlet1@output1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['customer_Transform.csv'],",
 				"     umask: 0022,",
