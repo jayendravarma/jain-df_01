@@ -8,10 +8,10 @@
 			"server": "mysqlserverdevmorningjuly.database.windows.net",
 			"database": "adventureworks",
 			"encrypt": "mandatory",
-			"trustServerCertificate": false,
+			"trustServerCertificate": true,
 			"authenticationType": "SQL",
-			"userName": "adventureworks",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDNERDRCQTZBLTQ2MkYtNEExNi1CQzdFLUQyQjY3NjdDMDc2RV8xMmY3YjkyNy01Nzk5LTQxOWUtODE2NC04YjUzNWQwNTczNjQiDQp9"
+			"userName": "dbadmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDNERDRCQTZBLTQ2MkYtNEExNi1CQzdFLUQyQjY3NjdDMDc2RV8zOWJhNzUwNi0zY2U2LTQ5NzgtOWI1Ni1hOWVhODdjZDFjNGQiDQp9"
 		}
 	}
 }
