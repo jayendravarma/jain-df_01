@@ -87,7 +87,7 @@
 								"source": {
 									"type": "SqlServerSource",
 									"sqlReaderQuery": {
-										"value": "@concat('select * from ',item().table_name,' where ',item().WatermarkColumn,' > ''',item().LastWatermark,''' and ',item().WatermarkColumn ,' <= ''',variables('CurrentDateTime'),'''')",
+										"value": "@concat('select * from ',item().table_name,' where ',item().WatermarkColumn,' > ''',item().LastWatermark,''' and ',item().WatermarkColumn ,' <= ''', formatDateTime(variables('CurrentDateTime'),'yyyy-MM-dd HH:mm:ss'),'''')",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
