@@ -24,7 +24,8 @@
 					"dataset": {
 						"referenceName": "DS_Source_AllSales_Tables",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
@@ -41,10 +42,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('CopyIncrementalData').output.value",
+						"value": "@activity('LookupAllEligibilTables').output.value",
 						"type": "Expression"
 					},
-					"isSequential": true,
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Set variable1",
@@ -125,7 +126,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"FolderName": {
-											"value": "@item().table_name",
+											"value": "@replace(item().table_name, '.', '_')",
 											"type": "Expression"
 										}
 									}
