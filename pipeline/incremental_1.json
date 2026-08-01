@@ -41,7 +41,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('CopyIncrementalData').output",
+						"value": "@activity('CopyIncrementalData').output.value",
 						"type": "Expression"
 					},
 					"isSequential": true,
