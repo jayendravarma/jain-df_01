@@ -1,0 +1,19 @@
+{
+	"name": "MetadataDrivenCopyTask_op1_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_op1_20260803"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SalesLT",
+			"table": "MainControlTable_op1"
+		}
+	}
+}
