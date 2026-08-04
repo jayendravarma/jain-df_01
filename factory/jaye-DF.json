@@ -1,6 +1,9 @@
 {
 	"name": "jaye-DF",
 	"properties": {
+		"globalConfigurations": {
+			"PipelineBillingEnabled": "true"
+		},
 		"trustModeClaimForMi": {
 			"value": "Disabled",
 			"editable": true
